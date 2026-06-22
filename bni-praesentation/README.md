@@ -1,57 +1,47 @@
-# BNI Hauptpräsentation – „Die KI-Show“ (KK Hannover)
+# 🎬 KK Hannover – Cinematischer KI-Trailer (BNI)
 
-Eine **self-contained, offline-fähige** HTML-Präsentation mit **echten Live-Effekten** direkt im Browser.
-Kein Internet, keine Installation, **kein Video nötig** – die KI spricht und tippt live.
+Ein **dramatisches, cinematisches Video** im Stil eines Kino-Trailers – komplett aus Code generiert.
+**Keine Folien, keine Bilder, keine Stockfotos.** Nur kraftvolle Kinetic Typography auf Schwarz,
+dramatischer Verlauf-Glow, Filmkorn, Vignette, Screen-Shake beim Einschlag – und eine
+**selbst synthetisierte, dramatische Tonspur** (tiefer Drone → Riser → Sub-Boom → hoffnungsvolles Finale).
 
-## ▶️ Starten
-Doppelklick auf **`index.html`** → Browser öffnet sich → `F` für Vollbild → `Leertaste` startet die Show.
+## ▶️ Das fertige Video
+**`video/kk-hannover-trailer.mp4`** · 1920×1080 · 74 Sekunden · H.264 + Ton (18 MB)
 
-**Empfehlung:** Chrome oder Edge (beste Sprachausgabe).
+Einfach abspielen (Doppelklick) – am besten in Vollbild auf dem Beamer, **Ton laut**. 🔊
 
-## 🔊 WICHTIG vor dem Auftritt testen
-Auf Folie 3 **spricht der Browser wirklich**. Damit das klappt:
+## 🎞️ Der dramaturgische Aufbau
+1. **Problem (kalt, dunkel):** „Jeden Tag verlierst du Stunden … an Arbeit, die keiner machen will.“
+2. **Montage des Schmerzes:** verpasste Anrufe, liegengebliebene Angebote, Routine – „Wieder. Und wieder.“
+3. **Wendepunkt + Riser:** „Was, wenn das ab morgen jemand anderes macht? … der niemals schläft, niemals krank wird … der nur EINES kostet —“
+4. **Einschlag:** **„STROM.“** (Boom, Flash, Screen-Shake)
+5. **Hoffnung:** „Er nimmt jeden Anruf an. Schreibt Angebote in Sekunden. Arbeitet, während du schläfst.“
+6. **Reveal:** „Das ist keine Zukunft. Das ist Künstliche Intelligenz. Heute.“
+7. **Marke:** **KK HANNOVER** · „Wir bauen Mitarbeiter aus Code.“ · KI-Agentur Hannover & Wedemark
 
-1. **Lautstärke** am Präsentations-Rechner/Beamer aufdrehen.
-2. **Deutsche Stimme** installiert haben:
-   - **Windows:** Einstellungen → Zeit & Sprache → Sprache & Region → Deutsch-Sprachpaket inkl. Sprachausgabe.
-   - **macOS:** Systemeinstellungen → Bedienungshilfen → Gesprochene Inhalte → Systemstimme (Deutsch laden).
-   - Ohne deutsche Stimme liest die KI mit englischem Akzent – funktioniert, klingt aber besser mit DE-Stimme.
-3. Einmal komplett durchspielen (Anruf + Tippen).
+## 🛠️ Neu erzeugen / anpassen
+Alles ist Code – kein Schnittprogramm nötig.
 
-> Die Live-Demos werden per **Button-Klick** ausgelöst (volle Kontrolle, kein Auto-Start) – ideal fürs Timing auf der Bühne.
+```bash
+cd video
+npm install            # holt ffmpeg-static + @napi-rs/canvas (einmalig)
+node audio.js          # erzeugt die Tonspur  -> audio.wav
+node render.js         # rendert & encodiert  -> kk-hannover-trailer.mp4
+```
 
-## ⌨️ Steuerung
-| Taste | Funktion |
-|-------|----------|
-| `→` / `Leertaste` | weiter |
-| `←` | zurück |
-| `F` | Vollbild an/aus |
-| `N` | **Sprechernotizen** ein/aus (nur für dich) |
-| `Esc` | **Übersicht** aller Folien (Klick = hinspringen) |
+**Was du leicht ändern kannst:**
+- **`timeline.js`** – jede Zeile/Karte: Text, Einblendzeit (`t`), Ausblendzeit (`e`), Größe (`size`),
+  Optionen (`upper` = Großschrift, `key` = Farbverlauf-Text, `impact` = Einschlag, `line` = Akzentlinie, `sub` = kleine Unterzeile).
+- **`render.js`** – `moodStops` (Farb-/Stimmungsverlauf), Glow, Filmkorn, Vignette, Encode-Qualität (`-crf`).
+- **`audio.js`** – Arrangement der Tonspur (Drone, Ticks, Riser, Boom-Zeitpunkt, Finale-Akkord).
 
-## ✨ Die Live-WOW-Effekte
-- **Folie 3 – KI-Anruf:** Button „📞 Anruf annehmen“ → es klingelt (Web-Audio), dann führt die KI einen **gesprochenen, witzigen Dialog** mit einem Anrufer und bucht den Termin. „↻ Nochmal“ wiederholt.
-- **Folie 4 – KI schreibt:** Button „✨ KI schreiben lassen“ → ein Angebot wird **live getippt** (Streaming), am Ende der Stempel „4 Sek. statt 25 Min.“.
-- **Folie 5 – Fallbeispiele:** Zahlen **zählen automatisch hoch**, sobald die Folie erscheint.
-- **Folie 6 – Bandbreite:** die Möglichkeiten **leuchten nacheinander auf**.
-- **Folie 7 – Vorher/Nachher:** **Regler live ziehen** (Maus/Touch), um „heute“ vs. „mit KI“ zu vergleichen.
-- **Folie 9 – Finale:** **Konfetti** 🎉.
-- **Titelfolie:** animiertes neuronales Partikel-Netz im Hintergrund.
+> Bitrate/Größe: gesteuert über `-crf` und `-maxrate` in `render.js`. Aktuell ~2 Mbit/s → 18 MB.
 
-## 🗣️ Sprechzettel
-Kompletter Redetext mit Timing, Pointen und Mini-Spickzettel: **`sprechzettel.md`**.
-Notizen lassen sich auch live mit `N` einblenden.
+## 💡 Einsatz beim BNI-Meeting
+- Als **Opener** vor deiner Hauptpräsentation (zieht den Raum sofort rein), oder
+- als **kompletter, eigenständiger Auftritt** mit kurzem Live-Schlusswort von dir
+  (Empfehlungsfrage ans Chapter), oder
+- als **Teaser** für Social Media / Website.
 
-## 📦 Export (optional)
-PDF: im Browser `Strg/Cmd + P` → „Als PDF speichern“ (Querformat, Hintergrundgrafiken aktivieren).
-Hinweis: Im PDF sind die Live-Effekte naturgemäß nicht animiert – für den Auftritt **immer den Browser** nutzen.
-
-## 🎨 Anpassen
-Alles in `index.html`:
-- **Dialog des Anrufs:** die `dialogue`-Liste im `<script>` (Texte, Reihenfolge, Stimme).
-- **Angebotstext:** die Variable `offer`.
-- **Fallbeispiel-Zahlen:** `data-to` / `data-suffix` an den `.num`-Elementen.
-- **Farben:** `:root { ... }` ganz oben.
-- **Notizen:** `data-notes="..."` je Folie.
-
-Viel Erfolg am Freitag – Bühne frei für deinen Mitarbeiter aus Strom! 🚀⚡
+Hinweis: `node_modules/` und die Zwischendatei `audio.wav` sind bewusst nicht eingecheckt
+(siehe `video/.gitignore`) – beide werden durch die Befehle oben neu erzeugt.
