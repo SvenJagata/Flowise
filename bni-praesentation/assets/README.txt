@@ -1,6 +1,6 @@
-Hier kommen deine Medien rein:
+Dieser Ordner wird fuer die Live-Show NICHT mehr zwingend benoetigt.
 
-  voice-agent-demo.mp4   -> deine Live-Voice-Agent-Demo (Folie 6)
-  poster.jpg             -> optionales Vorschaubild fuer das Video
+Die KI spricht und tippt jetzt LIVE im Browser (kein Video noetig).
 
-Solange diese Dateien fehlen, zeigt Folie 6 automatisch einen sauberen Platzhalter.
+Optional kannst du hier eigene Medien ablegen, falls du Folien erweiterst
+(z. B. ein echtes Mitschnitt-Video eines KI-Anrufs als Backup).
